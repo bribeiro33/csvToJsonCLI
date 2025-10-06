@@ -19,10 +19,11 @@ Example output:
 2. Initialize a Go module: ```go mod init csvToJsonCLI```
 4. Build it: ```go build -o main .```
 5. Run it: ```./main <inputfilename.csv> <outputfilename.jl>```
+6. Modify it to your liking and then run the tests to confirm it's still working ```go test```
 
 ### Command Line Usage
 Usage: ```./main <input.csv> <output.jl>```
 
 Example: ```./main housesInput.csv housesOutput.jl```
 
-In this project I used AI to help create verbose and frequent error checks since I'm still getting used to go style error checking and norms.
+In this project I used AI to help create verbose and frequent error checks since I'm still getting used to go style error checking and norms. I also used it to improve my tests so that they were more idiomatic go and less pytest-esque.
