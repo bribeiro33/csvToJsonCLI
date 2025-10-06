@@ -46,15 +46,25 @@ func parseCell(s string) any {
 	return s
 }
 
-func convertCSVtoJSON(inPath, outPath string) error {
+func convertFile(inPath, outPath string) error {
 	inFile, err := os.Open(inPath)
 	if err != nil {
 		return fmt.Errorf("opening input: %w", err)
 	}
 	defer inFile.Close()
 
+	outFile, err := os.Create(outPath)
+	if err != nil {
+		return fmt.Errorf("creating output: %w", err)
+	}
+	defer outFile.Close()
+
+	return encodeJSONL(inFile, outFile)
+}
+
+func encodeJSONL(r io.Reader, w io.Writer) error {
 	// reads csv file
-	reader := csv.NewReader(inFile)
+	reader := csv.NewReader(r)
 	reader.TrimLeadingSpace = true
 
 	// read header row (col names)
@@ -70,23 +80,15 @@ func convertCSVtoJSON(inPath, outPath string) error {
 		header[i] = strings.TrimSpace(h)
 	}
 
-	// Prepare output
-	outFile, err := os.Create(outPath)
-	if err != nil {
-		return fmt.Errorf("creating output: %w", err)
-	}
-
 	// batches writes
-	writer := bufio.NewWriter(outFile)
+	writer := bufio.NewWriter(w)
 	defer writer.Flush() // sends anything in the buffer to the file
-	defer outFile.Close()
 
 	// turn rows into JSOn
 	rowNum := 1 // everything past header
 	// loop through rows
 	for {
 		record, err := reader.Read() // csv row
-		// no file
 		if err == io.EOF {
 			break
 		}
@@ -151,7 +153,7 @@ func main() {
 	inPath := os.Args[1]
 	outPath := os.Args[2]
 
-	if err := convertCSVtoJSON(inPath, outPath); err != nil {
+	if err := convertFile(inPath, outPath); err != nil {
 		// error handling
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 		os.Exit(1)

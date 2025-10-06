@@ -20631,4 +20631,10 @@
 {"value":112000,"income":3.5673,"age":11,"rooms":2640,"bedrooms":505,"pop":1257,"hh":445}
 {"value":107200,"income":3.5179,"age":15,"rooms":2655,"bedrooms":493,"pop":1200,"hh":432}
 {"value":115600,"income":3.125,"age":15,"rooms":2319,"bedrooms":416,"pop":1047,"hh":385}
-{"value":98300,"income":2.
+{"value":98300,"income":2.5495,"age":27,"rooms":2080,"bedrooms":412,"pop":1082,"hh":382}
+{"value":116800,"income":3.7125,"age":28,"rooms":2332,"bedrooms":395,"pop":1041,"hh":344}
+{"value":78100,"income":1.5603,"age":25,"rooms":1665,"bedrooms":374,"pop":845,"hh":330}
+{"value":77100,"income":2.5568,"age":18,"rooms":697,"bedrooms":150,"pop":356,"hh":114}
+{"value":92300,"income":1.7,"age":17,"rooms":2254,"bedrooms":485,"pop":1007,"hh":433}
+{"value":84700,"income":1.8672,"age":18,"rooms":1860,"bedrooms":409,"pop":741,"hh":349}
+{"value":89400,"income":2.3886,"age":16,"rooms":2785,"bedrooms":616,"pop":1387,"hh":530}
